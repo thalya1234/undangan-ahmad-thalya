@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Ahmad & Thalya</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      color: #fff;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      margin: 10px 0;
+    }
+
+    iframe {
+      width: 90%;
+      height: 315px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .countdown {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    /* Animasi kelopak bunga */
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 25px;
+      height: 25px;
+      background: url('https://pngimg.com/uploads/petals/petals_PNG56.png') no-repeat center;
+      background-size: contain;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elemen animasi kelopak -->
+  <script>
+    function createPetal() {
+      const petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, 10000);
+    }
+
+    setInterval(createPetal, 500);
+  </script>
+
+  <!-- Musik Otomatis -->
+  <audio autoplay loop hidden>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    Browser Anda tidak mendukung audio.
+  </audio>
+
+  <div class="container">
+    <h1>Undangan Pernikahan</h1>
+    <h2>Ahmad & Thalya</h2>
+    <p>Dengan bahagia, kami mengundang Anda untuk hadir dalam momen istimewa kami</p>
+
+    <div class="countdown" id="countdown">Menghitung waktu...</div>
+
+    <h3>Tanggal & Waktu</h3>
+    <p>06 Juli 2025<br>Akad: 09.00 WITA | Resepsi: 11.00 - 14.00 WITA</p>
+
+    <h3>Lokasi Acara</h3>
+    <p>Skyn Hall, Makassar</p>
+    <a href="https://maps.google.com" target="_blank">Lihat di Google Maps</a>
+
+    <h3>Video Undangan</h3>
+    <iframe src="https://www.canva.com/design/DAGnDw4jNUg/IUWAeMv2b4DrUq3wQUT9FQ/watch?embed" allowfullscreen></iframe>
+
+    <h3>RSVP</h3>
+    <p>Konfirmasi kehadiran via WhatsApp:</p>
+    <a href="https://wa.me/6281234567890">Klik untuk RSVP</a>
+
+    <p style="margin-top: 30px;">Terima kasih atas doa dan restunya.</p>
+  </div>
+
+  <script>
+    const countdown = () => {
+      const eventDate = new Date("July 6, 2025 09:00:00").getTime();
+      const now = new Date().getTime();
+      const gap = eventDate - now;
+
+      const day = 1000 * 60 * 60 * 24;
+      const hour = 1000 * 60 * 60;
+      const minute = 1000 * 60;
+      const second = 1000;
+
+      const d = Math.floor(gap / day);
+      const h = Math.floor((gap % day) / hour);
+      const m = Math.floor((gap % hour) / minute);
+      const s = Math.floor((gap % minute) / second);
+
+      document.getElementById("countdown").innerText =
+        `${d} hari ${h} jam ${m} menit ${s} detik lagi`;
+    };
+
+    setInterval(countdown, 1000);
+  </script>
+</body>
+</html>
